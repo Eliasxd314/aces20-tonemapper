@@ -1,36 +1,42 @@
 # ACES 2.0 HDR Tonemapper Script 🎬🍿
 
-Un script en Python de línea de comandos diseñado para aplicar de forma nativa el pipeline de mapeo de tonos **ACES 2.0 (Academy Color Encoding System)** a imágenes de alto rango dinámico (HDR), con soporte para archivos `.exr` y `.tiff` de alta precisión.
+A command-line Python script designed to natively apply the **ACES 2.0 (Academy Color Encoding System)** tone mapping pipeline to High Dynamic Range (HDR) images, featuring robust support for high-precision `.exr` and `.tiff` files.
 
-El script incluye ajustes de exposición lineal, control de saturación por hardware de color (ASC-CDL), procesamiento por lotes (batch) e incrusta metadatos personalizados dentro del archivo de salida.
+The script includes linear exposure multipliers, color-hardware saturation controls via ASC-CDL math, automatic batch processing, and injects persistent development metadata into the output files.
 
-## Prerrequisitos (Fedora Linux)
+## Prerequisites (Fedora Linux)
 
-Asegúrate de instalar las librerías de desarrollo del sistema antes de instalar las dependencias de Python:
+Ensure you install the required system development libraries before setting up the Python dependencies:
 
 ```bash
 sudo dnf install openexr openexr-devel zlib-devel gcc-c++ python3-devel exiftool
 pip install -r requirements.txt
 ```
 
-> **Nota Importante:** Este script requiere el archivo de configuración oficial de ACES 2.0. Debes descargar el archivo `.ocio` (se recomienda la versión *CG Config*) desde el repositorio oficial de [OpenColorIO-Config-ACES](https://github.com) y colocarlo en el mismo directorio con el nombre `cg-config-v4.0.0_aces-v2.0_ocio-v2.5.ocio`.
+> **Important Note:** This script requires an official ACES 2.0 OpenColorIO configuration file. Download the `.ocio` profile (the *CG Config* version is highly recommended) from the official [OpenColorIO-Config-ACES](https://github.com) repository and place it in the same directory as the script. The script will automatically detect and use it.
 
-## Características
+## Features
 
-- 🚀 **Pipeline ACES 2.0 Puro:** Transformación matemática exacta usando OpenColorIO.
-- 📸 **Soporte de Formatos:** Decodificación nativa de archivos OpenEXR de 16/32-bit y TIFF flotantes.
-- 🎛️ **Controles de Imagen:** Modificadores de exposición lineal (`-e`) y saturación cromática (`-s`).
-- 📂 **Procesamiento por Lotes:** Procesa directorios enteros si no se especifica un archivo.
-- 🏷️ **Metadatos Persistentes:** Inyecta factores de revelado internamente en el PNG (`tEXt`), legibles con `exiftool`.
+- 🚀 **Pure ACES 2.0 Pipeline:** Exact mathematical color transformations powered natively by OpenColorIO.
+- 📸 **Format Support:** High-precision native decoding for 16/32-bit OpenEXR and floating-point TIFF matrices.
+- 🎛️ **Image Controls:** Fine-tune image states with linear exposure (`-e`) and ASC-CDL saturation (`-s`) modifiers.
+- 📂 **Smart Configuration Lookup:** Automatically searches for any `.ocio` file in the execution directory, reducing hardcoding friction.
+- 🏷️ **Persistent Metadata:** Injects development factors internally into the output PNG containers (`tEXt` chunks), readable globally via `exiftool`.
 
-## Ejemplos de Uso
+## Usage Examples
 
-**Revelar una sola imagen ajustando saturación:**
+**Process a single HDR image reducing chromatic saturation by 25%:**
 ```bash
-./tonemap-aces.py mi_foto.exr -e 1.0 -s 0.75
+./tonemap-aces.py my_photo.exr -e 1.0 -s 0.75
 ```
 
-**Procesar una carpeta completa en lote:**
+**Batch process an entire directory of HDR exposures at once:**
 ```bash
-./tonemap-aces.py /ruta/a/mis/imagenes/hdr/
+./tonemap-aces.py /path/to/my/hdr/images/
 ```
+
+**Explicitly pass an external OpenColorIO config file location:**
+```bash
+./tonemap-aces.py landscape.exr --config /opt/ocio/studio-config.ocio
+```
+

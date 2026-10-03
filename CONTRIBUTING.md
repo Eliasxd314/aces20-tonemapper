@@ -1,13 +1,14 @@
-# ¡Contribuye al ACES 2.0 Tonemapper! 🚀
+# Contributing to ACES 2.0 Tonemapper! 🚀
 
-Este es un proyecto abierto y experimental. Si encuentras formas de optimizar el procesamiento de imágenes, mejorar la precisión del color o añadir nuevas características, ¡tu ayuda es más que bienvenida!
+This is an open, experimental project. If you find ways to optimize image matrix transformations, improve color space precision, or add new automation features, your help is highly appreciated!
 
-## ¿Cómo ayudar?
+## How to Help?
 
-1. **Reporta Errores:** Si un archivo `.tiff` o `.exr` específico rompe el script, abre un *Issue* en GitHub adjuntando el error de la terminal.
-2. **Mejora el Código:** Si optimizas las matrices de NumPy o mejoras la inyección de metadatos con Pillow:
-   - Haz un *Fork* del repositorio.
-   - Crea una rama con tu mejora (`git checkout -b feature/mejora-increible`).
-   - Abre un *Pull Request* explicando el cambio.
+1. **Report Bugs:** If a specific `.tiff` or `.exr` file structure crashes the CLI engine, open an *Issue* on GitHub attaching the stack trace from your terminal.
+2. **Improve the Code:** If you optimize NumPy matrix operations, extend file format compatibility, or enhance the Pillow metadata engine:
+   - *Fork* the repository.
+   - Create a dedicated feature branch (`git checkout -b feature/amazing-improvement`).
+   - Open a *Pull Request* clearly explaining your design changes.
 
-Al contribuir, aceptas que tu código estará protegido bajo la misma licencia Apache 2.0 del proyecto. ¡Gracias por hacer que el revelado HDR sea más accesible!
+By contributing, you agree that your code will be bound under the same Apache 2.0 License protecting this project. Thank you for making HDR image development more accessible to the community!
+
