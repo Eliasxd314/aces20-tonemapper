@@ -10,5 +10,14 @@ This is an open, experimental project. If you find ways to optimize image matrix
    - Create a dedicated feature branch (`git checkout -b feature/amazing-improvement`).
    - Open a *Pull Request* clearly explaining your design changes.
 
+## Running the Tests
+
+```bash
+pip install -r requirements-dev.txt
+pytest
+```
+
+The suite uses small synthetic images and OpenColorIO's built-in ACES 2.0 config, so it needs no external files. Please add or update a test with every behavior change.
+
 By contributing, you agree that your code will be bound under the same Apache 2.0 License protecting this project. Thank you for making HDR image development more accessible to the community!
 
