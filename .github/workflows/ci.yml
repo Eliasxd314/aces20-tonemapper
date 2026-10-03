@@ -15,9 +15,9 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Set up Python environment
-      uses: actions/uses/setup-python@v5
+      uses: actions/setup-python@v5
       with:
-        python-version: "3.11" # Versión estable de producción para testing de CI
+        python-version: "3.12" # Cambiado a la versión nativa estable del runner de Ubuntu
 
     - name: Install system dependencies for OpenEXR and OpenCV
       run: |
