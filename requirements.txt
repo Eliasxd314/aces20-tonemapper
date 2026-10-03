@@ -1,0 +1,6 @@
+opencv-python
+numpy
+OpenEXR
+Imath
+opencolorio
+Pillow

@@ -1,0 +1,17 @@
+# Archivos de configuración pesados (se deben descargar aparte)
+*.ocio
+
+# Archivos de imagen de prueba y resultados
+*.exr
+*.tiff
+*.tif
+*.hdr
+*.png
+*.jpg
+*.jpeg
+
+# Python e IDEs
+__pycache__/
+*.pyc
+.venv/
+.vscode/
