@@ -1,6 +1,5 @@
-opencv-python
-numpy
-OpenEXR
-Imath
-opencolorio
-Pillow
+numpy>=1.24
+opencv-python>=4.8
+OpenEXR>=3.2
+opencolorio>=2.5
+Pillow>=10.0
