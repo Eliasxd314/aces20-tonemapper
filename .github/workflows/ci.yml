@@ -17,12 +17,13 @@ jobs:
     - name: Set up Python environment
       uses: actions/setup-python@v5
       with:
-        python-version: "3.12" # Cambiado a la versión nativa estable del runner de Ubuntu
+        python-version: "3.12"
 
     - name: Install system dependencies for OpenEXR and OpenCV
       run: |
         sudo apt-get update
-        sudo apt-get install -y libopenexr-dev openexr libgl1-mesa-glx
+        # Se reemplaza libgl1-mesa-glx por libgl1 para compatibilidad nativa con Ubuntu 24.04
+        sudo apt-get install -y libopenexr-dev openexr libgl1
 
     - name: Install Python requirements
       run: |
