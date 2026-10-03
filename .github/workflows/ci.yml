@@ -1,0 +1,37 @@
+name: Python Integration Test
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository code
+      uses: actions/checkout@v4
+
+    - name: Set up Python environment
+      uses: actions/uses/setup-python@v5
+      with:
+        python-version: "3.11" # Versión estable de producción para testing de CI
+
+    - name: Install system dependencies for OpenEXR and OpenCV
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libopenexr-dev openexr libgl1-mesa-glx
+
+    - name: Install Python requirements
+      run: |
+        python -m pip install --upgrade pip
+        pip install flake8
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+    - name: Lint code with flake8 (Syntax check)
+      run: |
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+
